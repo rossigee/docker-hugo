@@ -4,7 +4,7 @@ A lightweight Docker container for Hugo static site generator with extended feat
 
 ## Features
 
-- 🏗️ **Built from Source**: Latest Hugo version (v0.148.2) compiled with extended features
+- 🏗️ **Built from Source**: Latest Hugo version (v0.155.3) compiled with extended features
 - 🔧 **CGO Enabled**: Full support for SCSS/SASS processing and image optimization
 - 🚀 **Ubuntu Noble Base**: Stable and secure foundation
 - 📦 **Multi-Stage Build**: Optimized image size while retaining full functionality
@@ -126,7 +126,7 @@ Example GitHub Actions:
 
 ## Hugo Version
 
-This container is built with **Hugo v0.148.2** with extended features including:
+This container is built with **Hugo v0.155.3** with extended features including:
 
 - SCSS/SASS processing
 - PostCSS support
