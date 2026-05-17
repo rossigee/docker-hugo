@@ -82,8 +82,8 @@ jobs:
         platforms: linux/amd64
         push: true
         labels: ${{ needs.extract-metadata.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        cache-from: type=gha,scope=amd64
+        cache-to: type=gha,mode=max,scope=amd64
         outputs: type=image,name=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }},push-by-digest=true,name-canonical=true
 
     - name: Build AMD64 image (PR)
@@ -96,8 +96,8 @@ jobs:
         load: true
         tags: ${{ needs.extract-metadata.outputs.tags }}
         labels: ${{ needs.extract-metadata.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        cache-from: type=gha,scope=amd64
+        cache-to: type=gha,mode=max,scope=amd64
 
   build-arm64:
     needs: extract-metadata
@@ -131,8 +131,8 @@ jobs:
         platforms: linux/arm64
         push: true
         labels: ${{ needs.extract-metadata.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        cache-from: type=gha,scope=arm64
+        cache-to: type=gha,mode=max,scope=arm64
         outputs: type=image,name=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }},push-by-digest=true,name-canonical=true
 
     - name: Build ARM64 image (PR)
@@ -145,8 +145,8 @@ jobs:
         load: true
         tags: ${{ needs.extract-metadata.outputs.tags }}
         labels: ${{ needs.extract-metadata.outputs.labels }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        cache-from: type=gha,scope=arm64
+        cache-to: type=gha,mode=max,scope=arm64
 
   merge:
     needs: [extract-metadata, build-amd64, build-arm64]
