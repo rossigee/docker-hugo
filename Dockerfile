@@ -1,5 +1,5 @@
 # Build Hugo binary
-FROM --platform=$TARGETARCH ubuntu:resolute AS hugobuild
+FROM --platform=$TARGETPLATFORM ubuntu:resolute AS hugobuild
 ARG TARGETARCH
 ENV HUGO_VERSION=v0.161.1
 RUN apt-get update && \
@@ -16,6 +16,6 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
     chmod +x /usr/bin/hugo
 
 # Build into a release container
-FROM --platform=$TARGETARCH ubuntu:resolute
+FROM --platform=$TARGETPLATFORM ubuntu:resolute
 ENV PATH=$PATH:/usr/local/bin
 COPY --from=hugobuild /usr/bin/hugo /usr/bin/hugo
