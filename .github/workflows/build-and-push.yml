@@ -81,7 +81,6 @@ jobs:
         context: .
         platforms: linux/amd64
         push: true
-        tags: ${{ needs.extract-metadata.outputs.tags }}
         labels: ${{ needs.extract-metadata.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
@@ -131,7 +130,6 @@ jobs:
         context: .
         platforms: linux/arm64
         push: true
-        tags: ${{ needs.extract-metadata.outputs.tags }}
         labels: ${{ needs.extract-metadata.outputs.labels }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
