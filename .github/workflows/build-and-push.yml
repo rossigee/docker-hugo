@@ -172,7 +172,7 @@ jobs:
         echo "AMD64 digest: ${AMD64_DIGEST}"
         echo "ARM64 digest: ${ARM64_DIGEST}"
 
-        echo '${{ needs.extract-metadata.outputs.tags }}' | jq -r '.[]' | while IFS= read -r TAG; do
+        echo '${{ needs.extract-metadata.outputs.tags }}' | while IFS= read -r TAG; do
           [ -z "$TAG" ] && continue
           echo "Creating manifest for: $TAG"
           docker buildx imagetools create -t "$TAG" \
@@ -200,7 +200,7 @@ jobs:
     steps:
     - name: Test AMD64 image
       run: |
-        IMAGE_TAG=$(echo '${{ needs.extract-metadata.outputs.tags }}' | jq -r '.[0]')
+        IMAGE_TAG=$(echo '${{ needs.extract-metadata.outputs.tags }}' | head -n1)
         docker run --rm "$IMAGE_TAG" hugo version
 
   scan:
