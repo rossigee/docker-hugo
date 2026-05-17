@@ -81,6 +81,7 @@ jobs:
         context: .
         platforms: linux/amd64
         push: true
+        pull: true
         labels: ${{ needs.extract-metadata.outputs.labels }}
         no-cache: true
         outputs: type=image,name=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }},push-by-digest=true,name-canonical=true
@@ -131,6 +132,7 @@ jobs:
         context: .
         platforms: linux/arm64
         push: true
+        pull: true
         labels: ${{ needs.extract-metadata.outputs.labels }}
         no-cache: true
         outputs: type=image,name=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }},push-by-digest=true,name-canonical=true
