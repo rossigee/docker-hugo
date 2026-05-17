@@ -195,12 +195,7 @@ jobs:
 
     - name: Verify ARM64 image architecture
       run: |
-        ARCH=$(docker buildx imagetools inspect ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.extract-metadata.outputs.hugo-version }} --format '{{json .}}' | jq -r '.manifests[] | select(.platform.architecture == "arm64") | .platform.architecture')
-        if [ "$ARCH" != "arm64" ]; then
-          echo "ARM64 manifest not found"
-          exit 1
-        fi
-        echo "ARM64 manifest verified"
+        docker buildx imagetools inspect ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.extract-metadata.outputs.hugo-version }} | grep -q "linux/arm64" && echo "ARM64 manifest verified" || exit 1
 
   test-pr:
     needs: [extract-metadata, build-amd64]
