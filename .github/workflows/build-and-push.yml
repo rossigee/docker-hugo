@@ -82,8 +82,7 @@ jobs:
         platforms: linux/amd64
         push: true
         labels: ${{ needs.extract-metadata.outputs.labels }}
-        cache-from: type=gha,scope=amd64
-        cache-to: type=gha,mode=max,scope=amd64
+        no-cache: true
         outputs: type=image,name=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }},push-by-digest=true,name-canonical=true
         provenance: false
         sbom: false
@@ -133,8 +132,7 @@ jobs:
         platforms: linux/arm64
         push: true
         labels: ${{ needs.extract-metadata.outputs.labels }}
-        cache-from: type=gha,scope=arm64
-        cache-to: type=gha,mode=max,scope=arm64
+        no-cache: true
         outputs: type=image,name=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }},push-by-digest=true,name-canonical=true
         provenance: false
         sbom: false
