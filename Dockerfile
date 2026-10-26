@@ -1,7 +1,7 @@
 # Build Hugo binary
 FROM ubuntu:resolute AS hugobuild
 ARG TARGETARCH
-ENV HUGO_VERSION=v0.161.1
+ENV HUGO_VERSION=v0.168.0
 RUN apt-get update && \
     apt-get install -y wget && \
     rm -rf /var/lib/apt/lists/*
